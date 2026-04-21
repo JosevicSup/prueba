@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🐾 Raza & Relax</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --warm-white: #fdfaf4;
+      --sage: #8aab8a;
+      --sage-light: #b5ccb5;
+      --sage-dark: #5d7a5d;
+      --terracotta: #c97b5a;
+      --terracotta-light: #e8b49a;
+      --brown: #6b4e3d;
+      --text-dark: #2e2418;
+      --text-mid: #5a4a3a;
+      --text-soft: #9a8a7a;
+      --sand: #e8dcc8;
+      --sand-dark: #d4c4a8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--cream);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background-color: var(--warm-white);
+      border-bottom: 2px solid var(--sand-dark);
+      padding: 0 3rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-paw {
+      font-size: 1.6rem;
+      animation: sway 3s ease-in-out infinite;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(-5deg); }
+      50% { transform: rotate(8deg); }
+    }
+
+    .logo-text {
+      font-family: 'Fraunces', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--brown);
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span {
+      color: var(--sage-dark);
+    }
+
+    nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    nav a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--sage-dark); }
+
+    .nav-btn {
+      background: var(--sage);
+      color: white !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-btn:hover { background: var(--sage-dark) !important; color: white !important; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--sage-light) 0%, var(--sand) 60%, var(--terracotta-light) 100%);
+      padding: 5rem 3rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 80%, rgba(138,171,138,0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(201,123,90,0.2) 0%, transparent 50%);
+    }
+
+    .hero-content { position: relative; }
+
+    .hero-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--sage-dark);
+      background: rgba(255,255,255,0.6);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+      margin-bottom: 1.2rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--sage-dark);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--text-mid);
+      font-weight: 300;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .hero-deco {
+      position: absolute;
+      font-size: 6rem;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    .hero-deco-1 { top: 10%; left: 5%; transform: rotate(-15deg); }
+    .hero-deco-2 { bottom: 5%; right: 8%; transform: rotate(20deg); }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      padding: 4rem 3rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-mid);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--sand-dark);
+    }
+
+    /* ── GRID ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--warm-white);
+      border-radius: 20px;
+      border: 1.5px solid var(--sand-dark);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.12s; }
+    .card:nth-child(3) { animation-delay: 0.19s; }
+    .card:nth-child(4) { animation-delay: 0.26s; }
+    .card:nth-child(5) { animation-delay: 0.33s; }
+    .card:nth-child(6) { animation-delay: 0.40s; }
+    .card:nth-child(7) { animation-delay: 0.47s; }
+    .card:nth-child(8) { animation-delay: 0.54s; }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(107,78,61,0.12);
+    }
+
+    .card-emoji-zone {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 140px;
+      font-size: 5rem;
+      position: relative;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(4px);
+    }
+
+    .badge-small  { color: var(--sage-dark);      border: 1px solid var(--sage); }
+    .badge-medium { color: var(--terracotta);      border: 1px solid var(--terracotta-light); }
+    .badge-large  { color: var(--brown);            border: 1px solid var(--sand-dark); }
+
+    .card-body {
+      padding: 1.4rem 1.6rem 1.8rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .card-name {
+      font-family: 'Fraunces', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--brown);
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+    }
+
+    .card-origin {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text-soft);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: auto;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background: var(--sand);
+      color: var(--text-mid);
+    }
+
+    .card-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--sand);
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-soft);
+    }
+
+    .stat-value {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .stars { color: var(--terracotta); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--brown);
+      color: var(--sand);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+
+    .footer-logo span { color: var(--sage-light); }
+
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: var(--sand-dark);
+      margin-top: 0.25rem;
+      font-weight: 300;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--sand-dark);
+      font-size: 0.82rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--sage-light); }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      opacity: 0.6;
+    }
+
+    /* ── COLOR PER CARD BG ── */
+    .bg-sage    { background: linear-gradient(145deg, #d4e8d4, #c2d8c2); }
+    .bg-terra   { background: linear-gradient(145deg, #f0d8c8, #e4c4ac); }
+    .bg-sky     { background: linear-gradient(145deg, #cce0ec, #b8d0e0); }
+    .bg-lavender{ background: linear-gradient(145deg, #ddd4ec, #ccc0e0); }
+    .bg-honey   { background: linear-gradient(145deg, #f0e0b0, #e4d09c); }
+    .bg-rose    { background: linear-gradient(145deg, #f0d0d8, #e4bcc8); }
+    .bg-mint    { background: linear-gradient(145deg, #c8e8e0, #b4d8d0); }
+    .bg-sand    { background: linear-gradient(145deg, #e8dcc4, #dcc8b0); }
+
+    @media (max-width: 640px) {
+      header { padding: 0 1.5rem; }
+      nav { display: none; }
+      .hero { padding: 3rem 1.5rem 2.5rem; }
+      main { padding: 2.5rem 1.5rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">
+    <span class="logo-paw">🐾</span>
+    <div class="logo-text">Raza</div>
+  </div>
+  <nav>
+    <a href="#">Razas</a>
+    <a href="#">Cuidados</a>
+    <a href="#">Blog</a>
+    <a href="#" class="nav-btn">Adoptar</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-deco hero-deco-1">🐶</div>
+  <div class="hero-deco hero-deco-2">🦴</div>
+  <div class="hero-content">
+    <div class="hero-label">Tu guía canina de cabecera</div>
+    <h1>Conoce a los mejores<br><em>compañeros del mundo</em></h1>
+    <p>Descubre razas, temperamentos, y encuentra al perro perfecto para tu estilo de vida.</p>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main>
+  <h2 class="section-title">Razas destacadas</h2>
+
+  <div class="cards-grid">
+
+    <!-- Golden Retriever -->
+    <div class="card">
+      <div class="card-emoji-zone bg-honey">
+        🦮
+        <span class="card-badge badge-large">Grande</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">
+          Golden Retriever
+          <span class="card-origin">🇬🇧 Reino Unido</span>
+        </div>
+        <p class="card-desc">Amigable, tolerante y absolutamente leal. El compañero ideal para familias con niños. Siempre lleva algo en la boca, normalmente amor.</p>
+        <div class="card-tags">
+          <span class="tag">Familiar</span>
+          <span class="tag">Juguetón</span>
+          <span class="tag">Inteligente</span>
+        </div>
+        <div class="card-stats">
+          <div class="stat">
+            <span class="stat-label">Esperanza de vida</span>
+            <span class="stat-value">10–12 años</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Sociabilidad</span>
+            <span class="stat-value stars">★★★★★</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Ejercicio</span>
+            <span class="stat-value">Alto</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Pelo</span>
+            <span class="stat-value">Largo / Mucho</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shiba Inu -->
+    <div class="card">
+      <div class="card-emoji-zone bg-terra">
+        🐕
+        <span class="card-badge badge-small">Pequeño</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">
+          Shiba Inu
+          <span class="card-origin">🇯🇵 Japón</span>
+        </div>
+        <p class="card-desc">Independiente, astuto y con mucha personalidad. El doge original. Muy limpio, casi como un gato. No te obedece; te tolera.</p>
+        <div class="card-tags">
+          <span class="tag">Independiente</span>
+          <span class="tag">Alerta</span>
+          <span class="tag">Terco</span>
+        </div>
+        <div class="card-stats">
+          <div class="stat">
+            <span class="stat-label">Esperanza de vida</span>
+            <span class="stat-value">13–16 años</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Sociabilidad</span>
+            <span class="stat-value stars">★★★☆☆</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Ejercicio</span>
+            <span class="stat-value">Moderado</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Pelo</span>
+            <span class="stat-value">Corto / Denso</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Border Collie -->
+    <div class="card">
+      <div class="card-emoji-zone bg-sage">
+        🐩
+        <span class="card-badge badge-medium">Mediano</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">
+          Border Collie
+          <span class="card-origin">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Escocia</span>
+        </div>
+        <p class="card-desc">Considerado el perro más inteligente del mundo. Enérgico y trabajador, necesita tener siempre algo que hacer o reorganizará toda tu casa.</p>
+        <div class="card-tags">
+          <span class="tag">Inteligente</span>
+          <span class="tag">Enérgico</span>
+          <span class="tag">Obediente</span>
+        </div>
+        <div class="card-stats">
+          <div class="stat">
+            <span class="stat-label">Esperanza de vida</span>
+            <span class="stat-value">12–15 años</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Sociabilidad</span>
+            <span class="stat-value stars">★★★★☆</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Ejercicio</span>
+            <span class="stat-value">Muy alto</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Pelo</span>
+            <span class="stat-value">Largo / Doble</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bulldog Francés -->
+    <div class="card">
+      <div class="card-emoji-zone bg-lavender">
+        🐶
+        <span class="card-badge badge-small">Pequeño</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">
+          Bulldog Francés
+          <span class="card-origin">🇫🇷 Francia</span>
+        </div>
+        <p class="card-desc">Afectuoso, curioso y con esas orejas de murciélago que lo hacen irresistible. El rey del sofá. Ronca, pero lo hace con elegancia.</p>
+        <div class="card-tags">
+          <span class="tag">Tranquilo</span>
+          <span class="tag">Afectuoso</span>
+          <span class="tag">Urbano</span>
+        </div>
+        <div class="card-stats">
+          <div class="stat">
+            <span class="stat-label">Esperanza de vida</span>
+            <span class="stat-value">10–12 años</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Sociabilidad</span>
+            <span class="stat-value stars">★★★★★</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Ejercicio</span>
+            <span class="stat-value">Bajo</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Pelo</span>
+            <span class="stat-value">Corto / Fácil</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Husky Siberiano -->
+    <div class="card">
+      <div class="card-emoji-zone bg-sky">
+        🐺
+        <span class="card-badge badge-large">Grande</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">
+          Husky Siberiano
+          <span class="card-origin">🇷🇺 Siberia</span>
+        </div>
+        <p class="card-desc">Majestuoso, vocal y lleno de drama. Capaz de aullar óperas enteras si lo dejas solo. Ojos impresionantes, alma de lobo, corazón de payaso.</p>
+        <div class="card-tags">
+          <span class="tag">Vocal</span>
+          <span class="tag">Activo</span>
+          <span class="tag">Dramático</span>
+        </div>
+        <div class="card-stats">
+          <div class="stat">
+            <span class="stat-label">Esperanza de vida</span>
+            <span class="stat-value">12–14 años</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Sociabilidad</span>
+            <span class="stat-value stars">★★★★☆</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Ejercicio</span>
+            <span class="stat-value">Muy alto</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Pelo</span>
+            <span class="stat-value">Doble / Mucho</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beagle -->
+    <div class="card">
+      <div class="card-emoji-zone bg-rose">
+        🐕‍🦺
+        <span class="card-badge badge-small">Pequeño</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">
+          Beagle
+          <span class="card-origin">🇬🇧 Reino Unido</span>
+        </div>
+        <p class="card-desc">Nariz legendaria. Seguirá cualquier olor hasta el fin del mundo, literalmente. Curioso, alegre y completamente incapaz de resistir la comida.</p>
+        <div class="card-tags">
+          <span class="tag">Curioso</span>
+          <span class="tag">Alegre</span>
+          <span class="tag">Olfateador</span>
+        </div>
+        <div class="card-stats">
+          <div class="stat">
+            <span class="stat-label">Esperanza de vida</span>
+            <span class="stat-value">12–15 años</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Sociabilidad</span>
+            <span class="stat-value stars">★★★★★</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Ejercicio</span>
+            <span class="stat-value">Moderado</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Pelo</span>
+            <span class="stat-value">Corto / Fácil</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dálmata -->
+    <div class="card">
+      <div class="card-emoji-zone bg-mint">
+        🐾
+        <span class="card-badge badge-large">Grande</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">
+          Dálmata
+          <span class="card-origin">🇭🇷 Croacia</span>
+        </div>
+        <p class="card-desc">Elegante, atlético y con un pelaje que nunca pasa de moda. Tiene energía infinita y necesita correr tanto como respirar. Icónico desde 1961.</p>
+        <div class="card-tags">
+          <span class="tag">Atlético</span>
+          <span class="tag">Leal</span>
+          <span class="tag">Elegante</span>
+        </div>
+        <div class="card-stats">
+          <div class="stat">
+            <span class="stat-label">Esperanza de vida</span>
+            <span class="stat-value">11–13 años</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Sociabilidad</span>
+            <span class="stat-value stars">★★★★☆</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Ejercicio</span>
+            <span class="stat-value">Alto</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Pelo</span>
+            <span class="stat-value">Corto / Spots</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pomerania -->
+    <div class="card">
+      <div class="card-emoji-zone bg-sand">
+        🦊
+        <span class="card-badge badge-small">Mini</span>
+      </div>
+      <div class="card-body">
+        <div class="card-name">
+          Pomerania
+          <span class="card-origin">🇩🇪 Alemania</span>
+        </div>
+        <p class="card-desc">Un León en cuerpo de bola de pelo. Extrovertido, valiente y convencido de que pesa 40 kg. Perfecto para pisos y para fotos muy tiernas.</p>
+        <div class="card-tags">
+          <span class="tag">Valiente</span>
+          <span class="tag">Vivaz</span>
+          <span class="tag">Esponjoso</span>
+        </div>
+        <div class="card-stats">
+          <div class="stat">
+            <span class="stat-label">Esperanza de vida</span>
+            <span class="stat-value">12–16 años</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Sociabilidad</span>
+            <span class="stat-value stars">★★★☆☆</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Ejercicio</span>
+            <span class="stat-value">Bajo</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Pelo</span>
+            <span class="stat-value">Largo / Mucho</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Raza <span>&amp; Relax</span> 🐾</div>
+    <div class="footer-tagline">Tu enciclopedia canina de andar por casa</div>
+  </div>
+  <div class="footer-links">
+    <a href="#">Sobre nosotros</a>
+    <a href="#">Contacto</a>
+    <a href="#">Privacidad</a>
+  </div>
+  <div class="footer-copy">© 2026 Raza & Relax · Hecho con amor 🤍</div>
+</footer>
+
+</body>
+</html>
